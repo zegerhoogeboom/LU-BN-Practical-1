@@ -14,7 +14,7 @@ df['open_date'] = pd.to_datetime(df['open_date'], format="%m/%d/%Y", errors="coe
 df['day_of_week'] = df['open_date'].dt.weekday_name
 df['open_time'] = pd.to_datetime(df['open_time'], format='%H:%M:%S')
 
-delta = datetime.timedelta(hours=1)
+delta = datetime.timedelta(hours=3)
 df['UnixStamp'] = df['open_time'].apply(lambda d: time.mktime(d.timetuple()))
 bins = np.arange(min(df['UnixStamp']), max(df['UnixStamp']) + delta.seconds, delta.seconds)
 
@@ -27,8 +27,8 @@ grouped = df.groupby(df['UnixStamp'].map(
 ))
 
 time_slots = pd.DataFrame(map(lambda (x,y): {'time': x, 'count': y.size}, grouped.groups.iteritems()))
-time_slots['count'] = map(lambda x: float(time_slots['count'][x]) / time_slots['count'].sum() * 100, range(time_slots['count'].size))
-time_slots.to_csv("priors/time_slots.txt", index=False, columns=["time", "count"])
+time_slots['count'] = map(lambda x: float(time_slots['count'][x]) / time_slots['count'].sum(), range(time_slots['count'].size))
+time_slots.to_csv("priors/time_slots.txt", index=False, columns=["time", "count"], header=False, date_format="%H:%M:%S")
 
 for column in df.columns:
     values = df[column].value_counts(normalize=True)
