@@ -1,0 +1,226 @@
+net
+{
+	propagationenginegenerator1791944048146838126L = "edu.ucla.belief.approx.BeliefPropagationSettings@52169ca6";
+	recoveryenginegenerator6944530267470113528l = "edu.ucla.util.SettingsImpl@4dc3b9d6";
+	node_size = (130.0 55.0);
+}
+
+node Month
+{
+	states = ("state0" "state1" );
+	position = (94 -21);
+	diagnosistype = "AUXILIARY";
+	DSLxSUBMODEL = "Root Submodel";
+	ismapvariable = "false";
+	ID = "variable0";
+	label = "Month of ocurrence";
+	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
+	excludepolicy = "include whole CPT";
+}
+node Jurisdiction
+{
+	states = ("state0" "state1" );
+	position = (397 -481);
+	diagnosistype = "AUXILIARY";
+	DSLxSUBMODEL = "Root Submodel";
+	ismapvariable = "false";
+	ID = "variable1";
+	label = "Jurisdiction responsible";
+	excludepolicy = "include whole CPT";
+}
+node Location
+{
+	states = ("state0" "state1" );
+	position = (245 -233);
+	diagnosistype = "AUXILIARY";
+	DSLxSUBMODEL = "Root Submodel";
+	ismapvariable = "false";
+	ID = "variable5";
+	label = "Location(+premise)";
+	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
+	excludepolicy = "include whole CPT";
+}
+node Housing
+{
+	states = ("state0" "state1" );
+	position = (692 -231);
+	diagnosistype = "AUXILIARY";
+	DSLxSUBMODEL = "Root Submodel";
+	ismapvariable = "false";
+	ID = "variable7";
+	label = "NYCHA housing";
+	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
+	excludepolicy = "include whole CPT";
+}
+node Classification
+{
+	states = ("state0" "state1" );
+	position = (397 -377);
+	diagnosistype = "AUXILIARY";
+	DSLxSUBMODEL = "Root Submodel";
+	ismapvariable = "false";
+	ID = "variable9";
+	label = "Internal classification";
+	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
+	excludepolicy = "include whole CPT";
+}
+node Borough
+{
+	states = ("state0" "state1" );
+	position = (584 -20);
+	diagnosistype = "AUXILIARY";
+	DSLxSUBMODEL = "Root Submodel";
+	ismapvariable = "false";
+	ID = "variable3";
+	label = "Borough";
+	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
+	excludepolicy = "include whole CPT";
+}
+node Description
+{
+	states = ("state0" "state1" );
+	position = (156 -331);
+	diagnosistype = "AUXILIARY";
+	DSLxSUBMODEL = "Root Submodel";
+	ismapvariable = "false";
+	ID = "variable8";
+	label = "Description of offense";
+	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
+	excludepolicy = "include whole CPT";
+}
+node Park
+{
+	states = ("state0" "state1" );
+	position = (467 -232);
+	diagnosistype = "AUXILIARY";
+	DSLxSUBMODEL = "Root Submodel";
+	ismapvariable = "false";
+	ID = "variable6";
+	label = "Name of NYC park";
+	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
+	excludepolicy = "include whole CPT";
+}
+node Precinct
+{
+	states = ("state0" "state1" );
+	position = (584 -125);
+	diagnosistype = "AUXILIARY";
+	DSLxSUBMODEL = "Root Submodel";
+	ismapvariable = "false";
+	ID = "variable4";
+	label = "Precinct";
+	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
+	excludepolicy = "include whole CPT";
+}
+node Level
+{
+	states = ("state0" "state1" );
+	position = (619 -480);
+	diagnosistype = "AUXILIARY";
+	DSLxSUBMODEL = "Root Submodel";
+	ismapvariable = "false";
+	ID = "variable2";
+	label = "Level of offense";
+	excludepolicy = "include whole CPT";
+}
+node Outcome
+{
+	states = ("state0" "state1" );
+	position = (168 -482);
+	diagnosistype = "AUXILIARY";
+	DSLxSUBMODEL = "Root Submodel";
+	ismapvariable = "false";
+	ID = "variable0";
+	label = "Outcome of crime";
+	excludepolicy = "include whole CPT";
+}
+node Day
+{
+	states = ("state0" "state1" );
+	position = (280 -20);
+	diagnosistype = "AUXILIARY";
+	DSLxSUBMODEL = "Root Submodel";
+	ismapvariable = "false";
+	ID = "variable1";
+	label = "Day of the week";
+	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
+	excludepolicy = "include whole CPT";
+}
+node Time
+{
+	states = ("state0" "state1" );
+	position = (187 -129);
+	diagnosistype = "AUXILIARY";
+	DSLxSUBMODEL = "Root Submodel";
+	ismapvariable = "false";
+	ID = "variable2";
+	label = "Time slot";
+	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
+	excludepolicy = "include whole CPT";
+}
+potential ( Month | )
+{
+	data = (	0.5	0.5	);
+}
+potential ( Jurisdiction | Classification )
+{
+	data = ((	0.5	0.5	)
+		(	0.5	0.5	));
+}
+potential ( Location | Time Precinct )
+{
+	data = (((	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	)));
+}
+potential ( Housing | Precinct )
+{
+	data = ((	0.5	0.5	)
+		(	0.5	0.5	));
+}
+potential ( Classification | Description )
+{
+	data = ((	0.5	0.5	)
+		(	0.5	0.5	));
+}
+potential ( Borough | )
+{
+	data = (	0.5	0.5	);
+}
+potential ( Description | Location )
+{
+	data = ((	0.5	0.5	)
+		(	0.5	0.5	));
+}
+potential ( Park | Precinct )
+{
+	data = ((	0.5	0.5	)
+		(	0.5	0.5	));
+}
+potential ( Precinct | Borough )
+{
+	data = ((	0.5	0.5	)
+		(	0.5	0.5	));
+}
+potential ( Level | Classification )
+{
+	data = ((	0.5	0.5	)
+		(	0.5	0.5	));
+}
+potential ( Outcome | Classification )
+{
+	data = ((	0.5	0.5	)
+		(	0.5	0.5	));
+}
+potential ( Day | )
+{
+	data = (	0.5	0.5	);
+}
+potential ( Time | Month Day )
+{
+	data = (((	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	)));
+}
