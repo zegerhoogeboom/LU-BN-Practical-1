@@ -7,7 +7,7 @@ net
 
 node Month
 {
-	states = ("state0" "state1" );
+	states = ("January" "February" "March" "April" "May" "June" "July" "August" "September" "October" "November" "December" );
 	position = (94 -21);
 	diagnosistype = "AUXILIARY";
 	DSLxSUBMODEL = "Root Submodel";
@@ -20,7 +20,7 @@ node Month
 node Jurisdiction
 {
 	states = ("state0" "state1" );
-	position = (397 -481);
+	position = (401 -439);
 	diagnosistype = "AUXILIARY";
 	DSLxSUBMODEL = "Root Submodel";
 	ismapvariable = "false";
@@ -43,7 +43,7 @@ node Location
 node Housing
 {
 	states = ("state0" "state1" );
-	position = (692 -231);
+	position = (606 -238);
 	diagnosistype = "AUXILIARY";
 	DSLxSUBMODEL = "Root Submodel";
 	ismapvariable = "false";
@@ -55,7 +55,7 @@ node Housing
 node Classification
 {
 	states = ("state0" "state1" );
-	position = (397 -377);
+	position = (410 -331);
 	diagnosistype = "AUXILIARY";
 	DSLxSUBMODEL = "Root Submodel";
 	ismapvariable = "false";
@@ -66,7 +66,7 @@ node Classification
 }
 node Borough
 {
-	states = ("state0" "state1" );
+	states = ("Brooklyn" "Manhattan" "Bronx" "Queens" "StatenIsland" );
 	position = (584 -20);
 	diagnosistype = "AUXILIARY";
 	DSLxSUBMODEL = "Root Submodel";
@@ -91,7 +91,7 @@ node Description
 node Park
 {
 	states = ("state0" "state1" );
-	position = (467 -232);
+	position = (425 -231);
 	diagnosistype = "AUXILIARY";
 	DSLxSUBMODEL = "Root Submodel";
 	ismapvariable = "false";
@@ -115,7 +115,7 @@ node Precinct
 node Level
 {
 	states = ("state0" "state1" );
-	position = (619 -480);
+	position = (639 -507);
 	diagnosistype = "AUXILIARY";
 	DSLxSUBMODEL = "Root Submodel";
 	ismapvariable = "false";
@@ -136,7 +136,7 @@ node Outcome
 }
 node Day
 {
-	states = ("state0" "state1" );
+	states = ("Friday" "Wednesday" "Thursday" "Saturday" "Tuesday" "Monday" "Sunday" );
 	position = (280 -20);
 	diagnosistype = "AUXILIARY";
 	DSLxSUBMODEL = "Root Submodel";
@@ -149,7 +149,7 @@ node Day
 node Time
 {
 	states = ("state0" "state1" );
-	position = (187 -129);
+	position = (13 -231);
 	diagnosistype = "AUXILIARY";
 	DSLxSUBMODEL = "Root Submodel";
 	ismapvariable = "false";
@@ -160,7 +160,7 @@ node Time
 }
 potential ( Month | )
 {
-	data = (	0.5	0.5	);
+	data = (	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	);
 }
 potential ( Jurisdiction | Classification )
 {
@@ -186,12 +186,18 @@ potential ( Classification | Description )
 }
 potential ( Borough | )
 {
-	data = (	0.5	0.5	);
+	data = (	0.29383630880291184	0.24124902882992763	0.2216627262929335	0.1976153081429407	0.04563662793128631	);
 }
-potential ( Description | Location )
+potential ( Description | Location Park Housing )
 {
-	data = ((	0.5	0.5	)
-		(	0.5	0.5	));
+	data = ((((	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	)))
+		(((	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	))));
 }
 potential ( Park | Precinct )
 {
@@ -201,6 +207,9 @@ potential ( Park | Precinct )
 potential ( Precinct | Borough )
 {
 	data = ((	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
 		(	0.5	0.5	));
 }
 potential ( Level | Classification )
@@ -208,19 +217,113 @@ potential ( Level | Classification )
 	data = ((	0.5	0.5	)
 		(	0.5	0.5	));
 }
-potential ( Outcome | Classification )
+potential ( Outcome | Classification Jurisdiction Level Time )
 {
-	data = ((	0.5	0.5	)
-		(	0.5	0.5	));
+	data = (((((	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	)))
+		(((	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	))))
+		((((	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	)))
+		(((	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	)))));
 }
 potential ( Day | )
 {
-	data = (	0.5	0.5	);
+	data = (	0.15553425149684447	0.1466888897238533	0.14503886946485495	0.14424101156685576	0.14161559958385836	0.13521393870286477	0.13166743946086834	);
 }
 potential ( Time | Month Day )
 {
 	data = (((	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
 		(	0.5	0.5	))
 		((	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
 		(	0.5	0.5	)));
 }
