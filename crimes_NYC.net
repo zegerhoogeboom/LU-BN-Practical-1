@@ -1,22 +1,10 @@
 net
 {
-	propagationenginegenerator1791944048146838126L = "edu.ucla.belief.approx.BeliefPropagationSettings@52169ca6";
-	recoveryenginegenerator6944530267470113528l = "edu.ucla.util.SettingsImpl@4dc3b9d6";
+	propagationenginegenerator1791944048146838126L = "edu.ucla.belief.approx.BeliefPropagationSettings@5ec3188";
+	recoveryenginegenerator6944530267470113528l = "edu.ucla.util.SettingsImpl@7c9c31eb";
 	node_size = (130.0 55.0);
 }
 
-node Month
-{
-	states = ("January" "February" "March" "April" "May" "June" "July" "August" "September" "October" "November" "December" );
-	position = (94 -21);
-	diagnosistype = "AUXILIARY";
-	DSLxSUBMODEL = "Root Submodel";
-	ismapvariable = "false";
-	ID = "variable0";
-	label = "Month of ocurrence";
-	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
-	excludepolicy = "include whole CPT";
-}
 node Jurisdiction
 {
 	states = ("state0" "state1" );
@@ -26,29 +14,6 @@ node Jurisdiction
 	ismapvariable = "false";
 	ID = "variable1";
 	label = "Jurisdiction responsible";
-	excludepolicy = "include whole CPT";
-}
-node Location
-{
-	states = ("state0" "state1" );
-	position = (245 -233);
-	diagnosistype = "AUXILIARY";
-	DSLxSUBMODEL = "Root Submodel";
-	ismapvariable = "false";
-	ID = "variable5";
-	label = "Location(+premise)";
-	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
-	excludepolicy = "include whole CPT";
-}
-node Housing
-{
-	states = ("state0" "state1" );
-	position = (606 -238);
-	diagnosistype = "AUXILIARY";
-	DSLxSUBMODEL = "Root Submodel";
-	ismapvariable = "false";
-	ID = "variable7";
-	label = "NYCHA housing";
 	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
 	excludepolicy = "include whole CPT";
 }
@@ -64,27 +29,38 @@ node Classification
 	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
 	excludepolicy = "include whole CPT";
 }
-node Borough
+node Time
 {
-	states = ("Brooklyn" "Manhattan" "Bronx" "Queens" "StatenIsland" );
-	position = (584 -20);
+	states = ("state0" "state1" );
+	position = (13 -231);
 	diagnosistype = "AUXILIARY";
 	DSLxSUBMODEL = "Root Submodel";
 	ismapvariable = "false";
-	ID = "variable3";
-	label = "Borough";
+	ID = "variable2";
+	label = "Time slot";
 	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
 	excludepolicy = "include whole CPT";
 }
-node Description
+node Precinct
 {
 	states = ("state0" "state1" );
-	position = (156 -331);
+	position = (738 -128);
 	diagnosistype = "AUXILIARY";
 	DSLxSUBMODEL = "Root Submodel";
 	ismapvariable = "false";
-	ID = "variable8";
-	label = "Description of offense";
+	ID = "variable1";
+	label = "Precinct";
+	excludepolicy = "include whole CPT";
+}
+node Location
+{
+	states = ("state0" "state1" );
+	position = (245 -233);
+	diagnosistype = "AUXILIARY";
+	DSLxSUBMODEL = "Root Submodel";
+	ismapvariable = "false";
+	ID = "variable5";
+	label = "Location(+premise)";
 	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
 	excludepolicy = "include whole CPT";
 }
@@ -100,15 +76,15 @@ node Park
 	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
 	excludepolicy = "include whole CPT";
 }
-node Precinct
+node Borough
 {
 	states = ("state0" "state1" );
-	position = (584 -125);
+	position = (564 -31);
 	diagnosistype = "AUXILIARY";
 	DSLxSUBMODEL = "Root Submodel";
 	ismapvariable = "false";
 	ID = "variable4";
-	label = "Precinct";
+	label = "Borough";
 	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
 	excludepolicy = "include whole CPT";
 }
@@ -121,6 +97,19 @@ node Level
 	ismapvariable = "false";
 	ID = "variable2";
 	label = "Level of offense";
+	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
+	excludepolicy = "include whole CPT";
+}
+node Housing
+{
+	states = ("state0" "state1" );
+	position = (629 -236);
+	diagnosistype = "AUXILIARY";
+	DSLxSUBMODEL = "Root Submodel";
+	ismapvariable = "false";
+	ID = "variable7";
+	label = "NYCHA housing";
+	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
 	excludepolicy = "include whole CPT";
 }
 node Outcome
@@ -132,6 +121,19 @@ node Outcome
 	ismapvariable = "false";
 	ID = "variable0";
 	label = "Outcome of crime";
+	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
+	excludepolicy = "include whole CPT";
+}
+node Description
+{
+	states = ("state0" "state1" );
+	position = (156 -331);
+	diagnosistype = "AUXILIARY";
+	DSLxSUBMODEL = "Root Submodel";
+	ismapvariable = "false";
+	ID = "variable8";
+	label = "Description of offense";
+	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
 	excludepolicy = "include whole CPT";
 }
 node Day
@@ -146,99 +148,29 @@ node Day
 	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
 	excludepolicy = "include whole CPT";
 }
-node Time
+node Month
 {
-	states = ("state0" "state1" );
-	position = (13 -231);
+	states = ("January" "February" "March" "April" "May" "June" "July" "August" "September" "October" "November" "December" );
+	position = (94 -21);
 	diagnosistype = "AUXILIARY";
 	DSLxSUBMODEL = "Root Submodel";
 	ismapvariable = "false";
-	ID = "variable2";
-	label = "Time slot";
+	ID = "variable0";
+	label = "Month of ocurrence";
 	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
 	excludepolicy = "include whole CPT";
 }
-potential ( Month | )
-{
-	data = (	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	);
-}
-potential ( Jurisdiction | Classification )
-{
-	data = ((	0.5	0.5	)
-		(	0.5	0.5	));
-}
-potential ( Location | Time Precinct )
+potential ( Jurisdiction | Classification Level )
 {
 	data = (((	0.5	0.5	)
 		(	0.5	0.5	))
 		((	0.5	0.5	)
 		(	0.5	0.5	)));
 }
-potential ( Housing | Precinct )
-{
-	data = ((	0.5	0.5	)
-		(	0.5	0.5	));
-}
 potential ( Classification | Description )
 {
 	data = ((	0.5	0.5	)
 		(	0.5	0.5	));
-}
-potential ( Borough | )
-{
-	data = (	0.29383630880291184	0.24124902882992763	0.2216627262929335	0.1976153081429407	0.04563662793128631	);
-}
-potential ( Description | Location Park Housing )
-{
-	data = ((((	0.5	0.5	)
-		(	0.5	0.5	))
-		((	0.5	0.5	)
-		(	0.5	0.5	)))
-		(((	0.5	0.5	)
-		(	0.5	0.5	))
-		((	0.5	0.5	)
-		(	0.5	0.5	))));
-}
-potential ( Park | Precinct )
-{
-	data = ((	0.5	0.5	)
-		(	0.5	0.5	));
-}
-potential ( Precinct | Borough )
-{
-	data = ((	0.5	0.5	)
-		(	0.5	0.5	)
-		(	0.5	0.5	)
-		(	0.5	0.5	)
-		(	0.5	0.5	));
-}
-potential ( Level | Classification )
-{
-	data = ((	0.5	0.5	)
-		(	0.5	0.5	));
-}
-potential ( Outcome | Classification Jurisdiction Level Time )
-{
-	data = (((((	0.5	0.5	)
-		(	0.5	0.5	))
-		((	0.5	0.5	)
-		(	0.5	0.5	)))
-		(((	0.5	0.5	)
-		(	0.5	0.5	))
-		((	0.5	0.5	)
-		(	0.5	0.5	))))
-		((((	0.5	0.5	)
-		(	0.5	0.5	))
-		((	0.5	0.5	)
-		(	0.5	0.5	)))
-		(((	0.5	0.5	)
-		(	0.5	0.5	))
-		((	0.5	0.5	)
-		(	0.5	0.5	)))));
-}
-potential ( Day | )
-{
-	data = (	0.15553425149684447	0.1466888897238533	0.14503886946485495	0.14424101156685576	0.14161559958385836	0.13521393870286477	0.13166743946086834	);
 }
 potential ( Time | Month Day )
 {
@@ -326,4 +258,79 @@ potential ( Time | Month Day )
 		(	0.5	0.5	)
 		(	0.5	0.5	)
 		(	0.5	0.5	)));
+}
+potential ( Precinct | Borough Park Housing )
+{
+	data = ((((	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	)))
+		(((	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	))));
+}
+potential ( Location | Time Borough )
+{
+	data = (((	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	)));
+}
+potential ( Park | Borough )
+{
+	data = ((	0.6666666666666666	0.3333333333333333	)
+		(	0.5	0.5	));
+}
+potential ( Borough | )
+{
+	data = (	0.5	0.5	);
+}
+potential ( Level | Classification )
+{
+	data = ((	0.5	0.5	)
+		(	0.5	0.5	));
+}
+potential ( Housing | Borough )
+{
+	data = ((	0.5	0.5	)
+		(	0.5	0.5	));
+}
+potential ( Outcome | Classification Jurisdiction Level Time )
+{
+	data = (((((	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	)))
+		(((	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	))))
+		((((	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	)))
+		(((	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	)))));
+}
+potential ( Description | Location Park Housing )
+{
+	data = ((((	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	)))
+		(((	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	))));
+}
+potential ( Day | )
+{
+	data = (	0.15553425149684447	0.1466888897238533	0.14503886946485495	0.14424101156685576	0.14161559958385836	0.13521393870286477	0.13166743946086834	);
+}
+potential ( Month | )
+{
+	data = (	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	);
 }
