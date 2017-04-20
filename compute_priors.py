@@ -5,7 +5,7 @@ import time
 import math
 
 dateparse = lambda x: pd.datetime.strptime(x, '%m/%d/%Y')
-columns = ["num", "open_date", "open_time", "close_date", "close_time", "reported_date", "code", "description", "internal_description", "internal_description", "outcome", "level_of_offense", "jurisdiction", "borough", "precinct", "location", "premise", "park", "housing_development", "x_coord", "y_coord", "latitude", "longitude"]
+columns = ["num", "open_date", "open_time", "close_date", "close_time", "reported_date", "code", "description", "internal_code", "internal_description", "outcome", "level_of_offense", "jurisdiction", "borough", "precinct", "location", "premise", "park", "housing_development", "x_coord", "y_coord", "latitude", "longitude"]
 df = pd.read_csv('data.csv', header=0, index_col=False, low_memory=False, names=columns)
 
 dropped_columns = ['num', 'latitude', 'longitude', 'x_coord', 'y_coord']
@@ -22,15 +22,17 @@ df['time_slots'] = pd.cut(pd.to_numeric(df['open_time']), 4, labels=["00 - 06","
 df['park'] = pd.notnull(df['park'])
 df['housing_development'] = pd.notnull(df['housing_development'])
 
-# Only use: [638.0, 101.0, 333.0, 639.0, 637.0, 338.0, 109.0, 254.0]
+# Only use: <type 'list'>: ['HARASSMENT_SUBD_3_4_5', 'ASSAULT_3', 'LARCENY_PETIT_FROM_STORE_SHOPL',
+# 'AGGRAVATED_HARASSMENT_2', 'HARASSMENT_SUBD_1_CIVILIAN', 'LARCENY_PETIT_FROM_BUILDING_UN',
+# 'ASSAULT_2_1_UNCLASSIFIED', 'MISCHIEF, CRIMINAL 4, OF MOTOR']
 # df['internal_description'] = df.loc[
 #     df['internal_description'].isin(
 #         df['internal_description'].value_counts().axes[0][:8].values
 #     )
 # ]['internal_description']
 
-# Only use: ['PETIT LARCENY', 'HARRASSMENT 2', 'ASSAULT 3 & RELATED OFFENSES', 'CRIMINAL MISCHIEF & RELATED OF',
-# 'GRAND LARCENY', 'OFF. AGNST PUB ORD SENSBLTY &', 'DANGEROUS DRUGS', 'FELONY ASSAULT']
+# Only use: ['PETIT_LARCENY', 'HARRASSMENT_2', 'ASSAULT_3_RELATED_OFFENSES', 'CRIMINAL_MISCHIEF_RELATED_OF',
+# 'GRAND_LARCENY', 'OFF_AGNST_PUB_ORD_SENSBLTY', 'DANGEROUS_DRUGS', 'FELONY_ASSAULT']
 # df['description'] = df.loc[
 #     df['description'].isin(
 #         df['description'].value_counts().axes[0][:8].values
@@ -102,13 +104,13 @@ def compute_prior_given_data4(column1, column2, column3, column4, y):
 
 # Single dependencies:
 # compute_prior_given_data(df["description"], df["internal_description"])
-# compute_prior_given_data(df["internal_description"], df["level_of_offense"])
+compute_prior_given_data(df["internal_description"], df["level_of_offense"])
 # compute_prior_given_data(df["borough"], df["park"])
 # compute_prior_given_data(df["borough"], df["housing_development"])
 
 # Two dependencies:
-compute_prior_given_data2(df["month"], df["day_of_week"], df["time_slots"])
-# compute_prior_given_data2(df["internal_description"], df["level_of_offense"], df["jurisdiction"])
+# compute_prior_given_data2(df["month"], df["day_of_week"], df["time_slots"])
+compute_prior_given_data2(df["internal_description"], df["level_of_offense"], df["jurisdiction"])
 # compute_prior_given_data2(df["borough"], df["time_slots"], df["location"])
 
 # Three dependencies:
