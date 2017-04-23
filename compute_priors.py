@@ -33,9 +33,11 @@ valid_jurisdiction = ['N.Y. POLICE DEPT', 'N.Y. HOUSING POLICE', 'N.Y. TRANSIT P
                       'DEPT OF CORRECTONS']
 valid_premise = ['STREET', 'RESIDENCE - APT. HOUSE', 'RESIDENCE - PUBLIC HOUSING', 'COMMERCIAL BUILDING', 'CHAIN STORE',
                  'TRANSIT - NYC SUBWAY', 'BAR/NIGHT CLUB']
+valid_precinct = [40 ,43 ,44 ,75 ,67 ,73 ,14 ,18 ,32 ,114 ,109 ,113 ,120 ,121 ,122]
 df['description'] = pd.Series(map(lambda x: x if x in valid_descriptions else "OTHER", df.description))
 df['jurisdiction'] = pd.Series(map(lambda x: x if x in valid_jurisdiction else "OTHER", df.jurisdiction))
 df['premise'] = pd.Series(map(lambda x: x if x in valid_premise else "OTHER", df.premise))
+df['precinct'] = pd.Series(map(lambda x: str(x) if x in valid_precinct else "OTHER", df.precinct))
 
 
 def compute_prior_given_data(column, y):
@@ -90,12 +92,12 @@ def compute_prior_given_data3(column1, column2, column3, y):
 # Single dependencies:
 # compute_prior_given_data(df["time_slots"], df["location"])
 # compute_prior_given_data(df["description"], df["level_of_offense"])
-compute_prior_given_data(df["description"], df["jurisdiction"])
+# compute_prior_given_data(df["description"], df["jurisdiction"])
 
 # Two dependencies:
 # compute_prior_given_data2(df["borough"], df["location"], df["premise"])
 # compute_prior_given_data2(df["borough"], df['location'], df["park"])
-# compute_prior_given_data2(df["borough"], df["park"], df["precinct"])
+compute_prior_given_data2(df["borough"], df["park"], df["precinct"])
 # compute_prior_given_data2(df["month"], df["day_of_week"], df["time_slots"])
 
 # Three dependencies:
