@@ -89,7 +89,7 @@ def compute_prior_given_data3(column1, column2, column3, y):
 
 # Single dependencies:
 # compute_prior_given_data(df["time_slots"], df["location"])
-compute_prior_given_data(df["description"], df["level_of_offense"])
+# compute_prior_given_data(df["description"], df["level_of_offense"])
 compute_prior_given_data(df["description"], df["jurisdiction"])
 
 # Two dependencies:
@@ -99,8 +99,8 @@ compute_prior_given_data(df["description"], df["jurisdiction"])
 # compute_prior_given_data2(df["month"], df["day_of_week"], df["time_slots"])
 
 # Three dependencies:
-compute_prior_given_data3(df["premise"], df["park"], df["time_slots"], df["description"])
-compute_prior_given_data3(df["level_of_offense"], df["description"], df["time_slots"], df["outcome"])
+# compute_prior_given_data3(df["premise"], df["park"], df["time_slots"], df["description"])
+# compute_prior_given_data3(df["level_of_offense"], df["description"], df["time_slots"], df["outcome"])
 
 
 for column in df.columns:
